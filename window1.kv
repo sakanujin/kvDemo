@@ -1,0 +1,84 @@
+<Window1@BoxLayout>
+    orientation: "vertical"
+
+    ActionBar:
+        ActionView:
+
+            ActionPrevious:
+                title: 'ウィンドウ1'
+                with_previous: False
+
+            ActionButton:
+                text: '切り替え'
+                on_press: print("change disp window 1"); app.root.change_disp2()
+
+    #BoxLayout:
+    #    Label:
+    #        text: '画面1'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Label:
+            id: label1
+            font_name: './mplus-2c-regular.ttf'
+            font_size: 58
+            text: "現在温度:    -15 ℃"
+            #text: root.text
+        Label:
+            id: label1
+            font_name: './mplus-2c-regular.ttf'
+            font_size: 58
+            text: "設定温度:    +33 ℃"
+            #text:  root.temp
+            #text: root.text
+
+        BoxLayout:
+            #Button:
+            #    id: button1
+            #    font_name: './mplus-2c-regular.ttf'
+            #    text: "オフ"
+            #    text: root.text
+            #    font_size: 58
+            #    on_press: root.buttonClicked()
+            #    text: root.text
+
+            ToggleButton:
+                id: button1
+                font_name: './mplus-2c-regular.ttf'
+                text: "オフ"
+               # text: root.text
+                font_size: 58
+                on_press: app.root.buttonClicked()
+                #text: root.text
+            Button:
+                id: button2
+                font_name: './mplus-2c-regular.ttf'
+                text: "UP"
+               # text: root.text2
+               # text: root.temp
+                font_size: 50
+                on_press: app.root.btc2()
+
+            Button:
+                id: button3
+                font_name: './mplus-2c-regular.ttf'
+                text: "DOWN"
+                #text: root.text3
+                font_size: 50
+                on_press: app.root.btc3()
+
+
+<ToggleButton@ToggleButton>
+    background_color:(0,0,0,0)
+    background_normal:''
+    text_size: self.width, None
+    halign: 'center'
+    canvas.before:
+        Color:
+            rgba:(255/255,0/255,102/255,1) if self.state=='down' else (48/255,84/255,150/255,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
